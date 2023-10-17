@@ -20,7 +20,9 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
     private final RequestMappingHandlerMapping mapping;
 
     @Override
-    public void commence(HttpServletRequest request, HttpServletResponse response, AuthenticationException authException) throws ServletException {
+    public void commence(HttpServletRequest request,
+                         HttpServletResponse response,
+                         AuthenticationException authException) throws ServletException {
         try {
             HandlerExecutionChain handler = mapping.getHandler(request);
             resolver.resolveException(request, response, handler == null ? null : handler.getHandler(), authException);
