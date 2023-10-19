@@ -1,7 +1,7 @@
 #  https://docs.spring.io/spring-boot/docs/current/reference/html/common-application-properties.html
 app:
   host-url: http://localhost:8080
-  test-mail: ${MAIL_USER}
+  test-mail: ${mail.user}
   templates-update-cache: 5s
   mail-sending-props:
     core-pool-size: 8
@@ -27,8 +27,8 @@ spring:
         jdbc.batch_size: 20
   datasource:
     url: jdbc:postgresql://localhost:5432/jira
-    username: ${JIRA_USERNAME}
-    password: ${JIRA_PASSWORD}
+    username: ${db.username}
+    password: ${db.password}
 
   liquibase:
     changeLog: "classpath:db/changelog.sql"
@@ -51,19 +51,19 @@ spring:
       client:
         registration:
           github:
-            client-id: ${GITHUB_ID}
-            client-secret: ${GITHUB_SECRET}
+            client-id: ${github.id}
+            client-secret: ${github.secret}
             scope:
               - email
           google:
-            client-id: ${GOOGLE_ID}
-            client-secret: ${GOOGLE_SECRET}
+            client-id: ${google.id}
+            client-secret: ${google.secret}
             scope:
               - email
               - profile
           gitlab:
-            client-id: ${GITLAB_ID}
-            client-secret: ${GITLAB_SECRET}
+            client-id: ${gitlab.id}
+            client-secret: ${gitlab.secret}
             client-name: GitLab
             redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
             authorization-grant-type: authorization_code
@@ -87,8 +87,8 @@ spring:
             enable: true
           auth: true
     host: smtp.gmail.com
-    username: ${MAIL_USER}
-    password: ${MAIL_PASSWORD}
+    username: ${mail.user}
+    password: ${mail.password}
     port: 587
   thymeleaf.check-template-location: false
 
